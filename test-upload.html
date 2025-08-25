@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test File Upload - NTPC Press Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .upload-form { max-width: 500px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; padding: 15px; border-radius: 4px; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .file-info { margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test File Upload - NTPC Press Portal</h1>
+    <p>This page tests the file upload functionality of your backend server.</p>
+    
+    <div class="upload-form">
+        <h2>Test Upload Form</h2>
+        
+        <form id="testForm">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="Test Clipping" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Financial">Financial</option>
+                    <option value="Projects">Projects</option>
+                    <option value="Safety">Safety</option>
+                    <option value="Green Energy">Green Energy</option>
+                    <option value="Environment">Environment</option>
+                    <option value="HR">HR</option>
+                    <option value="Technology">Technology</option>
+                    <option value="CSR">CSR</option>
+                    <option value="Operations">Operations</option>
+                    <option value="Research">Research</option>
+                    <option value="Corporate Governance">Corporate Governance</option>
+                    <option value="Sustainability">Sustainability</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="3">This is a test clipping to verify the upload functionality.</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="file">PDF File:</label>
+                <input type="file" id="file" name="file" accept=".pdf" required>
+            </div>
+            
+            <button type="submit">Test Upload</button>
+        </form>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Set today's date as default
+        document.getElementById('date').value = new Date().toISOString().split('T')[0];
+        
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Uploading...</p>';
+            
+            try {
+                // First, upload the file
+                const formData = new FormData();
+                const file = document.getElementById('file').files[0];
+                formData.append('file', file);
+                
+                console.log('Uploading file:', file.name);
+                
+                const uploadResponse = await fetch('http://localhost:3001/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const uploadResult = await uploadResponse.json();
+                
+                if (!uploadResult.success) {
+                    throw new Error(uploadResult.message);
+                }
+                
+                console.log('File upload successful:', uploadResult);
+                
+                // Now create the clipping entry
+                const clippingData = {
+                    title: document.getElementById('title').value,
+                    date: document.getElementById('date').value,
+                    category: document.getElementById('category').value,
+                    description: document.getElementById('description').value,
+                    url: `http://localhost:3001/data/${uploadResult.filename}`
+                };
+                
+                // Get existing clippings
+                const clippingsResponse = await fetch('http://localhost:3001/api/clippings');
+                const existingClippings = await clippingsResponse.json();
+                
+                // Add new clipping
+                const newClipping = {
+                    id: Math.max(0, ...existingClippings.map(c => c.id)) + 1,
+                    ...clippingData
+                };
+                
+                existingClippings.unshift(newClipping);
+                
+                // Save updated clippings
+                const saveResponse = await fetch('http://localhost:3001/api/clippings', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(existingClippings)
+                });
+                
+                const saveResult = await saveResponse.json();
+                
+                if (!saveResult.success) {
+                    throw new Error(saveResult.message);
+                }
+                
+                // Show success
+                resultDiv.innerHTML = `
+                    <div class="result success">
+                        <h3>✅ Upload Successful!</h3>
+                        <div class="file-info">
+                            <p><strong>File:</strong> ${uploadResult.originalName}</p>
+                            <p><strong>Saved as:</strong> ${uploadResult.filename}</p>
+                            <p><strong>Size:</strong> ${(uploadResult.size / 1024).toFixed(2)} KB</p>
+                            <p><strong>URL:</strong> <a href="${newClipping.url}" target="_blank">${newClipping.url}</a></p>
+                        </div>
+                        <p><strong>Message:</strong> ${uploadResult.message}</p>
+                        <p><strong>Clippings saved:</strong> ${saveResult.message}</p>
+                        <p><strong>File Location:</strong> Saved to local data folder: <code>data/${uploadResult.filename}</code></p>
+                        <p><strong>Next Step:</strong> The clipping is now available in the main application's view-clipping section!</p>
+                    </div>
+                `;
+                
+                // Reset form
+                document.getElementById('testForm').reset();
+                document.getElementById('date').value = new Date().toISOString().split('T')[0];
+                
+            } catch (error) {
+                console.error('Upload failed:', error);
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Upload Failed</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Make sure your server is running on http://localhost:3001</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
