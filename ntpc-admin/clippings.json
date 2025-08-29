@@ -1,0 +1,138 @@
+[
+  {
+    "id": 17,
+    "title": "qw",
+    "date": "2025-08-27",
+    "category": "Financial",
+    "description": "erer",
+    "url": "http://localhost:3001/data/1756288047104_Admit_Card.pdf"
+  },
+  {
+    "id": 16,
+    "title": "wew",
+    "date": "2025-08-25",
+    "category": "Safety",
+    "description": "wewe",
+    "url": "http://localhost:3001/data/1756101053752_my-resume.pdf"
+  },
+  {
+    "id": 1,
+    "title": "NTPC Announces Q4 FY2025 Results - Record Breaking Performance",
+    "date": "2025-08-20",
+    "category": "Financial",
+    "description": "NTPC Limited reports exceptional financial performance for Q4 FY2025",
+    "url": "http://10.0.60.24:8180/2025/APR%202025/Press%20Clippings%2010.04.2025%20%E0%A4%8F%E0%A4%A8%E0%A4%9F%E0%A5%80%E0%A4%AA%E0%A5%80%E0%A4%B8%E0%A5%80%20%E0%A4%B8%E0%A4%BF%E0%A4%82%E0%A4%97%E0%A4%B0%E0%A5%8C%E0%A4%B2%E0%A5%80%20%E0%A4%95%E0%A5%87%20%E0%A4%B8%E0%A5%80%E0%A4%8F%E0%A4%B8%E0%A4%86%E0%A4%B0%20%E0%A4%AF%E0%A5%8B%E0%A4%9C%E0%A4%A8%E0%A4%BE%20%E0%A4%95%E0%A5%87%20%E0%A4%A4%E0%A4%B9%E0%A4%A4%20%E0%A4%97%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%AE%E0%A5%80%E0%A4%A3%20%E0%A4%AE%E0%A4%B9%E0%A4%BF%E0%A4%B2%E0%A4%BE%E0%A4%93%E0%A4%82%20%E0%A4%B9%E0%A5%87%E0%A4%A4%E0%A5%81%20%E0%A4%B8%E0%A4%BE%E0%A4%AC%E0%A5%81%E0%A4%A8%20%E0%A4%94%E0%A4%B0%20%E0%A4%AE%E0%A5%8B%E0%A4%AE%E0%A4%AC%E0%A4%A4%E0%A5%8D%E0%A4%A4%E0%A5%80%20%E0%A4%AC%E0%A4%A8%E0%A4%BE%E0%A4%A8%E0%A5%87%20%E0%A4%95%E0%A4%BE%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%B6%E0%A4%BF%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3%20%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AF%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%AE%20%E0%A4%95%E0%A4%BE%20%E0%A4%B6%E0%A5%81%E0%A4%AD%E0%A4%BE%E0%A4%B0%E0%A4%82%E0%A4%AD.pdf"
+  },
+  {
+    "id": 2,
+    "title": "World's Largest Solar Power Plant Inaugurated in Rajasthan",
+    "date": "2025-08-18",
+    "category": "Projects",
+    "description": "NTPC inaugurates 1000 MW solar power facility contributing to India's renewable energy goals",
+    "url": "http://10.0.60.24/2025/AUGUST_2025/Press_Clippings_18.08.2025_Solar_Plant_Rajasthan.pdf"
+  },
+  {
+    "id": 3,
+    "title": "NTPC Wins National Excellence Award for Safety Practices",
+    "date": "2025-08-15",
+    "category": "Safety",
+    "description": "Recognition for implementing world-class safety protocols across all operations",
+    "url": "http://10.0.60.24/2025/AUGUST_2025/Press_Clippings_15.08.2025_Safety_Award.pdf"
+  },
+  {
+    "id": 4,
+    "title": "Green Hydrogen Production MOU Signed with International Partners",
+    "date": "2025-08-12",
+    "category": "Green Energy",
+    "description": "Strategic partnership to establish India's largest green hydrogen production facility",
+    "url": "http://10.0.60.24/2025/AUGUST_2025/Press_Clippings_12.08.2025_Green_Hydrogen_MOU.pdf"
+  },
+  {
+    "id": 5,
+    "title": "Chairman Addresses COP30 Climate Change Summit",
+    "date": "2025-08-10",
+    "category": "Environment",
+    "description": "NTPC's commitment to carbon neutrality by 2032 highlighted at global summit",
+    "url": "http://10.0.60.24/2025/AUGUST_2025/Press_Clippings_10.08.2025_Climate_Summit.pdf"
+  },
+  {
+    "id": 6,
+    "title": "Zero Liquid Discharge Achieved at All Thermal Power Plants",
+    "date": "2025-08-08",
+    "category": "Environment",
+    "description": "Milestone achievement in water conservation and environmental protection",
+    "url": "http://10.0.60.24/2025/AUGUST_2025/Press_Clippings_08.08.2025_Zero_Discharge.pdf"
+  },
+  {
+    "id": 7,
+    "title": "NTPC Stock Reaches All-Time High on Market Confidence",
+    "date": "2025-08-05",
+    "category": "Financial",
+    "description": "Strong financial performance drives investor confidence to record levels",
+    "url": "http://10.0.60.24/2025/AUGUST_2025/Press_Clippings_05.08.2025_Stock_High.pdf"
+  },
+  {
+    "id": 8,
+    "title": "Advanced Employee Training Program Launched Nationwide",
+    "date": "2025-08-03",
+    "category": "HR",
+    "description": "Comprehensive skill development initiative for 50,000+ employees",
+    "url": "http://10.0.60.24/2025/AUGUST_2025/Press_Clippings_03.08.2025_Training_Program.pdf"
+  },
+  {
+    "id": 9,
+    "title": "Digital Transformation Initiative Shows Outstanding Results",
+    "date": "2025-08-01",
+    "category": "Technology",
+    "description": "AI and automation implementation improves operational efficiency by 35%",
+    "url": "http://10.0.60.24/2025/AUGUST_2025/Press_Clippings_01.08.2025_Digital_Transform.pdf"
+  },
+  {
+    "id": 10,
+    "title": "Rural Electrification Program Reaches 1 Million Households",
+    "date": "2025-07-30",
+    "category": "CSR",
+    "description": "NTPC's commitment to social responsibility transforms rural communities",
+    "url": "http://10.0.60.24/2025/JULY_2025/Press_Clippings_30.07.2025_Rural_Electrification.pdf"
+  },
+  {
+    "id": 11,
+    "title": "New Coal Mine Operations Begin in Odisha with Clean Technology",
+    "date": "2025-07-28",
+    "category": "Operations",
+    "description": "State-of-the-art mining facility incorporates latest environmental technologies",
+    "url": "http://10.0.60.24/2025/JULY_2025/Press_Clippings_28.07.2025_Coal_Mine_Odisha.pdf"
+  },
+  {
+    "id": 12,
+    "title": "NTPC Partners with IIT for Advanced Research Initiative",
+    "date": "2025-07-25",
+    "category": "Research",
+    "description": "Collaboration focuses on next-generation clean energy technologies",
+    "url": "http://10.0.60.24/2025/JULY_2025/Press_Clippings_25.07.2025_IIT_Partnership.pdf"
+  },
+  {
+    "id": 13,
+    "title": "Board Approves ₹50,000 Crore Renewable Energy Investment",
+    "date": "2025-07-22",
+    "category": "Corporate Governance",
+    "description": "Major board decision accelerates transition to renewable energy portfolio",
+    "url": "http://10.0.60.24/2025/JULY_2025/Press_Clippings_22.07.2025_Board_Decision.pdf"
+  },
+  {
+    "id": 14,
+    "title": "Sustainability Report 2025 Highlights Carbon Reduction Progress",
+    "date": "2025-07-20",
+    "category": "Sustainability",
+    "description": "Annual report showcases 40% reduction in carbon intensity over 5 years",
+    "url": "http://10.0.60.24/2025/JULY_2025/Press_Clippings_20.07.2025_Sustainability_Report.pdf"
+  },
+  {
+    "id": 15,
+    "title": "NTPC Wins Global Award for Innovation in Power Generation",
+    "date": "2025-07-18",
+    "category": "Technology",
+    "description": "International recognition for breakthrough in efficient power generation",
+    "url": "http://10.0.60.24/2025/JULY_2025/Press_Clippings_18.07.2025_Innovation_Award.pdf"
+  }
+]
