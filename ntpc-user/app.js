@@ -94,17 +94,36 @@ function renderModernClippings() {
         grid.innerHTML = '<p class="text-center">Select a year and month to view clippings.</p>';
         return;
     }
+    
+    // Get current search term from filters
+    const searchTerm = currentFilters.search || document.getElementById('searchInput')?.value.toLowerCase() || '';
+    
     let filtered = currentClippings.filter(c => {
         const d = new Date(c.date);
-        return d.getFullYear() === selectedYear && d.getMonth() === selectedMonth;
+        // Filter by year and month
+        if (d.getFullYear() !== selectedYear || d.getMonth() !== selectedMonth) {
+            return false;
+        }
+        
+        // Filter by search term if provided
+        if (searchTerm && !c.title.toLowerCase().includes(searchTerm) && 
+            !c.description.toLowerCase().includes(searchTerm)) {
+            return false;
+        }
+        
+        return true;
     });
+    
+    // Additional category filter
     if (selectedCategoryModern) {
         filtered = filtered.filter(c => c.category === selectedCategoryModern);
     }
+    
     if (!filtered.length) {
-        grid.innerHTML = '<p class="text-center">No clippings found for this month.</p>';
+        grid.innerHTML = '<p class="text-center">No clippings found matching your criteria.</p>';
         return;
     }
+    
     grid.innerHTML = filtered.map(c => `
         <div class="clipping-card fade-in" data-category="${c.category}">
             <div class="clipping-header">
@@ -467,9 +486,19 @@ function initializeViewPage() {
             renderModernClippings();
         });
     }
-    // Also keep legacy filter logic for search/filter grid if needed
-    applyFilters();
-    document.getElementById('searchInput').value = currentFilters.search;
+    
+    // Update search input to trigger renderModernClippings instead of applyFilters
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        // Remove existing listener
+        searchInput.removeEventListener('input', handleSearch);
+        // Add new listener that triggers renderModernClippings
+        searchInput.addEventListener('input', debounce(function(event) {
+            currentFilters.search = event.target.value.toLowerCase();
+            renderModernClippings();
+        }, 300));
+        searchInput.value = currentFilters.search;
+    }
 }
 
 function populateCategories() {
