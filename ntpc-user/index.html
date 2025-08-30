@@ -6,11 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NTPC Press Clippings Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../ntpc-shared/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
     <!-- Toast Notification -->
     <div id="toast" class="toast hidden">
@@ -19,12 +18,10 @@
             <span class="toast-message"></span>
         </div>
     </div>
-
     <!-- Loading Overlay -->
     <div id="loading" class="loading-overlay hidden">
         <div class="loading-spinner"></div>
     </div>
-
     <!-- Login Page -->
     <div id="loginPage" class="page active">
         <div class="login-container">
@@ -32,7 +29,7 @@
             <div class="login-card">
                 <div class="login-header">
                     <div class="ntpc-logo" style="margin-bottom: 12px;">
-                        <img src="logo.png" alt="NTPC Logo"
+                            <img src="../ntpc-shared/images/logo.png" alt="NTPC Logo"
                             style="width:15rem; height:5rem; display:block; margin:0 auto;" />
                     </div>
                     <h1 class="text-center" style="font-size: 1.5rem; margin-bottom: 4px;">NTPC Press Clippings Portal
@@ -93,7 +90,7 @@
                 <div class="header-left">
                     <div class="ntpc-logo-header">
                         <div class="ntpc-logo" style="margin-bottom: 0;">
-                            <img src="logo.png" alt="NTPC Logo"
+                            <img src="../ntpc-shared/images/logo.png" alt="NTPC Logo"
                                 style="width: 12rem; height:5rem; display:block; margin:0 auto;" />
                         </div>
                     </div>
@@ -249,99 +246,8 @@
         </div>
     </div>
 
-    <!-- Upload Page -->
-    <div id="uploadPage" class="page hidden">
-        <header class="header">
-            <div class="header-content">
-                <div class="header-left">
-                    <button class="btn btn--outline back-btn" onclick="showPage('dashboardPage')">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to Dashboard
-                    </button>
-                    <h2>Upload New Clipping</h2>
-                </div>
-                <div class="header-right">
-                    <button class="btn btn--outline refresh-btn" onclick="refreshClippingsFromServer()">
-                        <i class="fas fa-sync-alt"></i>
-                        Refresh Clippings
-                    </button>
-                </div>
-            </div>
-        </header>
 
-        <main class="upload-main">
-            <div class="container">
-                <div class="upload-container">
-                    <form id="uploadForm" class="upload-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="clippingTitle">Title</label>
-                                <input type="text" id="clippingTitle" name="title" required class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="clippingDate">Date</label>
-                                <input type="date" id="clippingDate" name="date" required class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="clippingCategory">Category</label>
-                                <select id="clippingCategory" name="category" required class="form-control">
-                                    <option value="">Select Category</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="clippingDescription">Description</label>
-                            <textarea id="clippingDescription" name="description" rows="3"
-                                class="form-control"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>PDF File</label>
-                            <div id="dropZone" class="drop-zone">
-                                <div class="drop-zone-content">
-                                    <i class="fas fa-cloud-upload-alt drop-icon"></i>
-                                    <p>Drag and drop your PDF file here</p>
-                                    <p class="drop-text-small">or <span class="drop-browse">browse files</span></p>
-                                    <input type="file" id="fileInput" accept=".pdf" hidden>
-                                </div>
-                                <div class="file-preview hidden">
-                                    <div class="file-info">
-                                        <i class="fas fa-file-pdf file-icon"></i>
-                                        <div class="file-details">
-                                            <span class="file-name"></span>
-                                            <span class="file-size"></span>
-                                        </div>
-                                        <button type="button" class="file-remove">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                    <div class="progress-bar hidden">
-                                        <div class="progress-fill"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="button" class="btn btn--secondary" onclick="resetUploadForm()">Reset</button>
-                            <button type="submit" class="btn btn--primary upload-btn">
-                                <span class="btn-text">Upload Clipping</span>
-                                <span class="btn-loader hidden">
-                                    <i class="fas fa-spinner fa-spin"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <script src="app.js"></script>
+    <script src="../ntpc-shared/js/app.js"></script>
 </body>
 
 </html>

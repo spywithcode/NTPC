@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NTPC Press Clippings Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../ntpc-shared/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
     <!-- Toast Notification -->
     <div id="toast" class="toast hidden">
@@ -18,12 +17,10 @@
             <span class="toast-message"></span>
         </div>
     </div>
-
     <!-- Loading Overlay -->
     <div id="loading" class="loading-overlay hidden">
         <div class="loading-spinner"></div>
     </div>
-
     <!-- Login Page -->
     <div id="loginPage" class="page active">
         <div class="login-container">
@@ -31,14 +28,13 @@
             <div class="login-card">
                 <div class="login-header">
                     <div class="ntpc-logo" style="margin-bottom: 12px;">
-                        <img src="logo.png" alt="NTPC Logo"
+                            <img src="../ntpc-shared/images/logo.png" alt="NTPC Logo"
                             style="width:15rem; height:5rem; display:block; margin:0 auto;" />
                     </div>
                     <h1 class="text-center" style="font-size: 1.5rem; margin-bottom: 4px;">NTPC Press Clippings Portal
                     </h1>
                     <p class="text-center" style="color: var(--color-text-secondary); font-size: 1rem;">Sign in to
                         Admin Portal</p>
-
                 </div>
                 <form id="loginForm" class="login-form" autocomplete="off" style="margin-top: 24px;">
                     <div class="form-group">
@@ -85,7 +81,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Dashboard Page -->
     <div id="dashboardPage" class="page hidden">
         <header class="header">
@@ -93,7 +89,7 @@
                 <div class="header-left">
                     <div class="ntpc-logo-header">
                         <div class="ntpc-logo" style="margin-bottom: 0;">
-                            <img src="logo.png" alt="NTPC Logo"
+                            <img src="../ntpc-shared/images/logo.png" alt="NTPC Logo"
                                 style="width: 12rem; height:5rem; display:block; margin:0 auto;" />
                         </div>
                     </div>
@@ -185,8 +181,17 @@
                             <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
+                    <div class="action-card" onclick="manualScanDataFolder()">
+                        <div class="action-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h3>Scan Data Folder</h3>
+                        <p>Manually scan for new PDFs placed directly in data folder</p>
+                        <div class="action-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </main>
     </div>
@@ -312,7 +317,7 @@
                                     <i class="fas fa-cloud-upload-alt drop-icon"></i>
                                     <p>Drag and drop your PDF file here</p>
                                     <p class="drop-text-small">or <span class="drop-browse">browse files</span></p>
-                                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                                    <input type="file" id="fileInput" name="file" accept=".pdf" hidden>
                                 </div>
                                 <div class="file-preview hidden">
                                     <div class="file-info">
@@ -346,12 +351,8 @@
             </div>
         </main>
     </div>
-    <div class="login-footer">
-        <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 24px;">© 2025 NTPC
-            Limited. All rights reserved.</p>
-    </div>
 
-    <script src="app.js"></script>
+    <script src="../ntpc-shared/js/app.js"></script>
 </body>
 
 </html>
