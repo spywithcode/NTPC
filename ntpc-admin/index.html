@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTPC Press Clippings Portal</title>
+    <link rel="stylesheet" href="../ntpc-shared/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <div class="toast-content">
+            <span class="toast-icon"></span>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+    </div>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-background"></div>
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="ntpc-logo" style="margin-bottom: 12px;">
+                            <img src="../ntpc-shared/images/logo.png" alt="NTPC Logo"
+                            style="width:15rem; height:5rem; display:block; margin:0 auto;" />
+                    </div>
+                    <h1 class="text-center" style="font-size: 1.5rem; margin-bottom: 4px;">NTPC Press Clippings Portal
+                    </h1>
+                    <p class="text-center" style="color: var(--color-text-secondary); font-size: 1rem;">Sign in to
+                        Admin Portal</p>
+                </div>
+                <form id="loginForm" class="login-form" autocomplete="off" style="margin-top: 24px;">
+                    <div class="form-group">
+                        <label for="username" class="form-label">User ID</label>
+                        <input type="text" id="username" name="username" class="form-control" required
+                            placeholder="Enter your user ID" autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="password-field">
+                            <input type="password" id="password" name="password" class="form-control" required
+                                placeholder="Enter your password" autocomplete="current-password">
+                            <button type="button" class="password-toggle" aria-label="Show/Hide Password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="captcha" class="form-label">Security Check</label>
+                        <div class="captcha-container" style="display: flex; align-items: center; gap: 8px;">
+                            <span id="captchaQuestion"
+                                style="flex: 0 0 auto; min-width: 60px; text-align: center; padding: 8px 12px; background: var(--color-bg-2); border-radius: 6px; font-weight: 500;"></span>
+                            <input type="number" id="captcha" name="captcha" class="form-control" required
+                                placeholder="Answer" style="flex: 1 1 80px; min-width: 0;" />
+                            <button type="button" class="captcha-refresh" aria-label="Refresh Captcha"
+                                style="flex: 0 0 auto; margin-left: 4px;">
+                                <i class="fas fa-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-actions" style="margin-top: 24px;">
+                        <button type="submit" class="btn btn--primary btn--full-width login-btn">
+                            <span class="btn-text">Sign In</span>
+                            <span class="btn-loader hidden">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+                <div class="login-footer">
+                    <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 24px;">© 2025 NTPC
+                        Limited. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page hidden">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="ntpc-logo-header">
+                        <div class="ntpc-logo" style="margin-bottom: 0;">
+                            <img src="../ntpc-shared/images/logo.png" alt="NTPC Logo"
+                                style="width: 12rem; height:5rem; display:block; margin:0 auto;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <div class="logo-text-main">
+                        <h1
+                            style="text-align:center; font-size:2.2rem; font-weight:700; margin:0.5em 0; width:100%; text-shadow: 2px 2px 8px rgba(0,0,0,0.18), 0 2px 4px rgba(0,0,0,0.12);">
+                            SINGRAULI PRESS CLIPPLING PORTAL</h1>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <i class="fas fa-user"></i>
+                        <span>Welcome, Administrator</span>
+                    </div>
+                    <button class="btn btn--outline logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt" style="margin-right: 7px;"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="container">
+                <div class="dashboard-welcome">
+                    <h1>Dashboard</h1>
+                    <p>Manage and monitor NTPC press clippings efficiently</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalClippings">0</h3>
+                            <p>Total Clippings</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalCategories">0</h3>
+                            <p>Categories</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="thisMonth">0</h3>
+                            <p>This Month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>+25%</h3>
+                            <p>Growth</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-cards">
+                    <div class="action-card" onclick="showPage('viewPage')">
+                        <div class="action-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>View Press Clippings</h3>
+                        <p>Browse, search, and filter existing press clippings</p>
+                        <div class="action-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="action-card" onclick="showPage('uploadPage')">
+                        <div class="action-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <h3>Upload New Clipping</h3>
+                        <p>Add new press clippings to the system</p>
+                        <div class="action-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="action-card" onclick="manualScanDataFolder()">
+                        <div class="action-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h3>Scan Data Folder</h3>
+                        <p>Manually scan for new PDFs placed directly in data folder</p>
+                        <div class="action-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- View Clippings Page -->
+    <div id="viewPage" class="page hidden">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="btn btn--outline back-btn" onclick="showPage('dashboardPage')">
+                        <i class="fas fa-arrow-left" style="margin-right: 7px;"></i>
+                        Back to Dashboard
+                    </button>
+                </div>
+                <div class="header-center">
+                    <h1
+                        style="text-align: center; text-transform: uppercase; text-shadow: 2px 2px 8px rgba(0,0,0,0.18), 0 2px 4px rgba(0,0,0,0.12); letter-spacing: 1px;">
+                        Press Clippings</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-container">
+                        <div
+                            style="display: flex; align-items: center; background: #fff; border-radius: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 0.25rem 1rem; gap: 0.5rem; min-width: 220px; border: 1px solid #e0e0e0; transition: box-shadow 0.2s;">
+                            <i class="fas fa-search search-icon" style="color: #888; font-size: 1.1rem;"></i>
+                            <input type="text" id="searchInput" placeholder="Search Clippings..." class="search-input"
+                                style="border: none; outline: none; background: transparent; font-size: 1.08rem; padding: 0.6rem 1.2rem; width: 170px; color: #222; font-weight: 500; letter-spacing: 0.5px;" />
+                        </div>
+                    </div>
+                    <button class="btn btn--outline refresh-btn" onclick="refreshClippingsFromServer()"
+                        style="margin-left: 10px;">
+                        <i class="fas fa-sync-alt" style="margin-right: 7px;"></i>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="view-main">
+            <div class="container">
+                <!-- Category Filter at Top -->
+                <div class="filters-section" style="margin-bottom: 1.5rem;">
+                    <div class="filters-row">
+                        <div class="filter-group" style="min-width:200px;">
+                            <label for="categoryFilter">Category</label>
+                            <select id="categoryFilter" class="form-control">
+                                <option value="">All Categories</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modern Year/Month Navigation -->
+                <section id="clippingNavSection" class="fade-in" style="margin-bottom: 2.5rem;">
+                    <div id="yearNav" class="flex gap-8 items-center" style="flex-wrap:wrap; margin-bottom:1.5rem;">
+                    </div>
+                    <div id="monthNav" class="flex gap-8 items-center" style="flex-wrap:wrap; margin-bottom:1.5rem;">
+                    </div>
+                </section>
+
+                <div id="modernClippingsGrid" class="clippings-grid"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Upload Page -->
+    <div id="uploadPage" class="page hidden">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="btn btn--outline back-btn" onclick="showPage('dashboardPage')">
+                        <i class="fas fa-arrow-left" style="margin-right: 7px;"></i>
+                        Back to Dashboard
+                    </button>
+                </div>
+                <div class="header-center">
+                    <h1
+                        style="text-align: center; text-transform: uppercase; text-shadow: 2px 2px 8px rgba(0,0,0,0.18), 0 2px 4px rgba(0,0,0,0.12); letter-spacing: 1px;">
+                        Press Clippings</h1>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn--outline refresh-btn" onclick="refreshClippingsFromServer()">
+                        <i class="fas fa-sync-alt" style="margin-right: 7px;"></i>
+                        Refresh Clippings
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="upload-main">
+            <div class="container">
+                <div class="upload-container">
+                    <form id="uploadForm" class="upload-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="clippingTitle">Title</label>
+                                <input type="text" id="clippingTitle" name="title" required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="clippingDate">Date</label>
+                                <input type="date" id="clippingDate" name="date" required class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="clippingCategory">Category</label>
+                                <select id="clippingCategory" name="category" required class="form-control">
+                                    <option value="">Select Category</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="clippingDescription">Description</label>
+                            <textarea id="clippingDescription" name="description" rows="3"
+                                class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>PDF File</label>
+                            <div id="dropZone" class="drop-zone">
+                                <div class="drop-zone-content">
+                                    <i class="fas fa-cloud-upload-alt drop-icon"></i>
+                                    <p>Drag and drop your PDF file here</p>
+                                    <p class="drop-text-small">or <span class="drop-browse">browse files</span></p>
+                                    <input type="file" id="fileInput" name="file" accept=".pdf" hidden>
+                                </div>
+                                <div class="file-preview hidden">
+                                    <div class="file-info">
+                                        <i class="fas fa-file-pdf file-icon"></i>
+                                        <div class="file-details">
+                                            <span class="file-name"></span>
+                                            <span class="file-size"></span>
+                                        </div>
+                                        <button type="button" class="file-remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="progress-bar hidden">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--secondary" onclick="resetUploadForm()">Reset</button>
+                            <button type="submit" class="btn btn--primary upload-btn">
+                                <span class="btn-text">Upload Clipping</span>
+                                <span class="btn-loader hidden">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../ntpc-shared/js/app.js"></script>
+</body>
+
+</html>
